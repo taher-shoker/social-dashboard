@@ -1,0 +1,29 @@
+
+.stories{
+  padding-top: 16px;
+
+    .story{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        .avatar{
+            img{
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                border: 2px solid $primary;
+                padding: 3px;
+
+            }
+            &:hover{
+                img{
+                    border-color: $half;
+                }
+            }
+        }
+        .av-name{
+            text-transform: capitalize;
+        }
+    }
+}
