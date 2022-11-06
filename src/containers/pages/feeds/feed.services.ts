@@ -8,9 +8,8 @@ interface StoryResponse {
 
 export function useFeeds() {
   // Filters Form
-  const myQueryKey = 'chart-data'
-    const {...result} = useQuery([myQueryKey], async () => {
-     return  await axios.get('https://raw.githubusercontent.com/abdelrhman-arnos/analysis-fe-challenge/master/data.json')
+    const {...result} = useQuery(['s'], async () => {
+     return  await axios.get('https://raw.githubusercontent.com/taher-shoker/social-dashboard/master/src/stories.json')
       
     })
   return {

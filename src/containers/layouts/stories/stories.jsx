@@ -5,7 +5,7 @@ import { useStories } from "./stories.services";
 
 
 function Stories() {
- const {stories} = useStories()
+    const { stories } = useStories()
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -13,11 +13,11 @@ function Stories() {
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 2,
+            items: 4,
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
-            items: 1,
+            items: 3,
         }
     };
 
@@ -36,9 +36,9 @@ function Stories() {
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"
             >
-                {['1', '2', '3', '15', '2', '3', '1', '2', '3', '1', '2', '3', '1', '2', '3'].map((el, index) => (
-                    <Story item={el} />
-
+                 <Story item={{id:1,name:'you',src:'https://pbs.twimg.com/profile_images/1346200826998644736/GXKFXDl7_400x400.jpg'}} className='you' />
+                {stories?.map((s, index) => (
+                    <Story item={s} key={s.id} />
                 ))}
 
             </Carousel>
