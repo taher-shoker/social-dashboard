@@ -1,18 +1,17 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 
-interface StoryResponse {
-  name: string;
-  src: string;
-}
 
 export function useFeeds() {
-  // Filters Form
-    const {...result} = useQuery(['s'], async () => {
-     return  await axios.get('https://raw.githubusercontent.com/taher-shoker/social-dashboard/master/src/stories.json')
-      
-    })
+  const { ...result } = useQuery(['feeds'], async () => {
+    return await axios.get('https://raw.githubusercontent.com/taher-shoker/social-dashboard/master/src/feeds.json')
+
+  })
+  if (result.isSuccess && localStorage.getItem("feedsLocal") === null) {
+    localStorage.setItem('feedsLocal', JSON.stringify(result.data?.data))
+  }
+  const feeds = JSON.parse( localStorage.getItem('feedsLocal')  || '{}')
   return {
-   
+    ...result, feeds
   };
 }

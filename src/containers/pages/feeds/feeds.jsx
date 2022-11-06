@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import Feed from "./component/feed";
+import { useFeeds } from "./feed.services";
 
 
 function Feeds() {
-  const [sortBy,setSortBy] =useState('all')
-  const item={
-    src:'',
-    avSrc:'',
-    accountName:''
-  }
-  const handelSortBy =(e)=>{
+  const { feeds,isSuccess } = useFeeds()
+  const [sortBy, setSortBy] = useState('all')
+
+  const handelSortBy = (e) => {
     console.log(e.target.value)
     setSortBy(e.target.value)
   }
@@ -20,22 +18,36 @@ function Feeds() {
         <div className="sort-by">
           <ul>
             <li>
-              <button className={sortBy === 'all' ? 'active' : ''} value='all' onClick={(e)=>handelSortBy(e)}>all</button>
+              <button className={sortBy === 'all' ? 'active' : ''} value='all' onClick={(e) => handelSortBy(e)}>all</button>
             </li>
             <li>
-              <button className={sortBy === 'following' ? 'active' : ''} value='following' onClick={(e)=>handelSortBy(e)}>following</button>
+              <button className={sortBy === 'following' ? 'active' : ''} value='following' onClick={(e) => handelSortBy(e)}>following</button>
             </li>
             <li>
-              <button className={sortBy === 'newest' ? 'active': ''} value='newest' onClick={(e)=>handelSortBy(e)}>newest</button>
+              <button className={sortBy === 'newest' ? 'active' : ''} value='newest' onClick={(e) => handelSortBy(e)}>newest</button>
             </li>
             <li>
-              <button className={sortBy === 'popular' ? 'active' : ''} value='popular' onClick={(e)=>handelSortBy(e)}>popular</button>
+              <button className={sortBy === 'popular' ? 'active' : ''} value='popular' onClick={(e) => handelSortBy(e)}>popular</button>
             </li>
-           
+
           </ul>
         </div>
       </div>
-       <Feed item={item}/> 
+      <div className="feeds-box">
+        <div className="row">
+
+          {isSuccess &&
+            feeds?.map(f =>
+              <div className="col-md-6" key={f.id}>
+                <Feed item={f}/>
+              </div>
+            )
+          }
+
+        </div>
+
+      </div>
+
     </div>
   );
 }

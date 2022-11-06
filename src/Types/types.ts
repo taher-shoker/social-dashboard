@@ -1,13 +1,15 @@
-export interface ResponseType  {
+export interface ResponseFeed  {
     id: string,
-	month: string,
-	camp: string,
-	country: string,
-	school: string,
-	lessons: number
+	name: string,
+	src: string,
+	feedSrc: string,
+	likesCount: number,
+	isLike: boolean,
+    commentsCount: number,
+	createAt: string,
 }
 
-export interface DataSet  {
+export interface ResponseStory  {
     id:string,
     school: string,
     lessons:Lessons[],
@@ -27,10 +29,3 @@ export  interface Lessons {
     month: string
 }
 
-export interface Chart {
-    labels: string[] | any[],
-    dataSets: DataSet[];
-    schools: any[];
-    colors:string[]
-    totalLessions:number
-  }
