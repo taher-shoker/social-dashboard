@@ -16,7 +16,6 @@ export function addLike(id:string) {
 
 export function removeLike(id:string) {
   const feedsData = JSON.parse(localStorage.getItem('feedsLocal') ?? '{}') ?? []
-
   const newFeeds = feedsData?.map((obj:ResponseFeed) => {
     if (obj.id === id) {
       return {...obj, isLike: false,likesCount: obj.likesCount-1};
@@ -31,7 +30,7 @@ export function sortByFeeds(sortBy:string) {
   var sorted =[]
   switch (sortBy) {
     case 'all':
-      sorted = feedsData.sort();
+      sorted = feedsData.sort((a:ResponseFeed, b:ResponseFeed) =>  a.name.localeCompare(b.name));
       localStorage.setItem('feedsLocal',JSON.stringify(feedsData))
       break;
       case 'following':
@@ -40,8 +39,8 @@ export function sortByFeeds(sortBy:string) {
 
         break;
         case 'newest':
-          //  sorted = feedsData.sort((a:ResponseFeed, b:ResponseFeed) => b[sortProperty] - a[sortProperty]);
-          // localStorage.setItem('feedsLocal',JSON.stringify(sorted))
+           sorted = feedsData.sort((a:ResponseFeed, b:ResponseFeed) =>   a.createAt.localeCompare(b.createAt));
+          localStorage.setItem('feedsLocal',JSON.stringify(sorted))
           break;
           case 'popular':
             sorted = feedsData.sort((a:ResponseFeed, b:ResponseFeed) => b['likesCount'] - a['likesCount']);
