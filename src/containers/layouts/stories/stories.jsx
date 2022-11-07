@@ -28,6 +28,7 @@ function Stories() {
         draggable={true}
         showDots={false}
         responsive={responsive}
+        autoPlay={true}
         customTransition="all .5"
         transitionDuration={500}
         containerClass="carousel-container"
