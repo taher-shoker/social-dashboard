@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { sortByFeeds } from "shared/helpers/utils";
 import Feed from "./component/feed";
 import { useFeeds } from "./feed.services";
 
@@ -10,6 +11,7 @@ function Feeds() {
   const handelSortBy = (e) => {
     console.log(e.target.value)
     setSortBy(e.target.value)
+    sortByFeeds(e.target.value)
   }
   return (
     <div className="feeds">

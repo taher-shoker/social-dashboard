@@ -42,7 +42,7 @@
                             fill: $half;
                         }
                     }
-                  &.active{
+                  &.active,&:hover{
                     box-shadow: -1px 7px 17px $light;
                     border-radius: 5px;
                     svg{

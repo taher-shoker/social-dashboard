@@ -1,13 +1,6 @@
 import { ResponseFeed } from "Types/types";
 
-export function sortByMonth(arr:[]) {
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-return  arr.sort(function(a:any, b:any){
-      return months.indexOf(a.month)
-           - months.indexOf(b.month);
-  });
-}
 
 export function addLike(id:string) {
   const feedsData = JSON.parse(localStorage.getItem('feedsLocal') ?? '{}') ?? []
@@ -31,4 +24,30 @@ export function removeLike(id:string) {
     return obj;
   }); 
   localStorage.setItem('feedsLocal',JSON.stringify(newFeeds))
+}
+
+export function sortByFeeds(sortBy:string) {
+  const feedsData = JSON.parse(localStorage.getItem('feedsLocal') ?? '{}') ?? []
+  var sorted =[]
+  switch (sortBy) {
+    case 'all':
+      sorted = feedsData.sort();
+      localStorage.setItem('feedsLocal',JSON.stringify(feedsData))
+      break;
+      case 'following':
+         sorted = feedsData.sort((a:ResponseFeed, b:ResponseFeed) => b['commentsCount'] - a['commentsCount']);
+        localStorage.setItem('feedsLocal',JSON.stringify(sorted))
+
+        break;
+        case 'newest':
+          //  sorted = feedsData.sort((a:ResponseFeed, b:ResponseFeed) => b[sortProperty] - a[sortProperty]);
+          // localStorage.setItem('feedsLocal',JSON.stringify(sorted))
+          break;
+          case 'popular':
+            sorted = feedsData.sort((a:ResponseFeed, b:ResponseFeed) => b['likesCount'] - a['likesCount']);
+            localStorage.setItem('feedsLocal',JSON.stringify(sorted))
+            break;
+    default:
+      break;
+  }
 }

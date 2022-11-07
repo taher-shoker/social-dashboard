@@ -20,9 +20,7 @@ export interface ResponseStory  {
   
 }
 
-export interface LabelsArr  {
-    labels:string[],
-}
+
 
 export  interface Lessons {
     lessons:number,
