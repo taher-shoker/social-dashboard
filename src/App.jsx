@@ -4,12 +4,11 @@ import React from "react";
 import "shared/assets/styles/main.scss";
 
 function App() {
-
   return (
     <div className="container-fluid">
       <div className="row">
-      <SideBar/>
-      <Content/> 
+        <SideBar />
+        <Content />
       </div>
     </div>
   );

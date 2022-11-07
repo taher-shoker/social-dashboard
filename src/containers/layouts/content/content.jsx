@@ -4,17 +4,16 @@ import InfoSide from "../infoSide/info-side";
 import Stories from "../stories/stories";
 
 function Content() {
-
   return (
     <div className="col-md-10">
       <div className="row">
         <div className="col-md-9">
-            <Stories/>
-            <hr/>
-            <AppRoutes/>
+          <Stories />
+          <hr />
+          <AppRoutes />
         </div>
         <div className="col-md-3">
-        <InfoSide/>
+          <InfoSide />
         </div>
       </div>
     </div>

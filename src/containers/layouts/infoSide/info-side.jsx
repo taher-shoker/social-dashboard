@@ -1,12 +1,9 @@
 import React from "react";
 
-
-function InfoSide({item}) {
+function InfoSide({ item }) {
   return (
     <div className="info-side">
-        <div className="info-box">
-            
-        </div>
+      <div className="info-box"></div>
     </div>
   );
 }

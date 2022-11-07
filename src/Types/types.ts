@@ -11,19 +11,9 @@ export interface ResponseFeed  {
 
 export interface ResponseStory  {
     id:string,
-    school: string,
-    lessons:Lessons[],
-    totalCount?:number,
-    month:string,
-    camp:string,
-    country:string
-  
+    name: string,
+    src:string,
 }
 
 
-
-export  interface Lessons {
-    lessons:number,
-    month: string
-}
 
